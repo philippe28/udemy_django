@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="splash">
+    <div class="pure-g-r">
+        <div class="pure-u-1">
+            <div class="l-box splash-text">
+                <h1 class="splash-head">
+                    {{ courses }}
+                </h1>
+                <h2 class="splash-subhead">
+                    {{ courses.description }}
+                </h2>
+                <p>
+                    <a href="#" class="pure-button primary-button">Inscreva-se</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-2-3">
+        <div class="l-box">
+            <h4 class="content-subhead">Sobre o Curso</h4>
+            {{ courses.about|linebreaks }}
+        </div>
+    </div>
+    <div class="pure-u-1-3">
+        <div class="l-box">
+              {% if courses.image %}
+            <img src="{{ courses.image.url }}" alt="{{ courses.name }}" />
+            {% else %}
+            <img src="{% static 'img/course-image.png' %}" alt="{{ course.name }}" />
+            {% endif %}
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
