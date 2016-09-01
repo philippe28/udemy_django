@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.conf import settings
 from .forms import RegisterForm
+from django.core.urlresolvers import reverse_lazy
+
 
 # Create your views here.
 
@@ -15,9 +17,9 @@ def register(request):
         form = RegisterForm(request.POST)
         print(form)
         if form.is_valid():
-
             form.save()
-            return redirect(settings.LOGIN_URL)
+            success_url = reverse_lazy('accounts:login')
+            return redirect(success_url)
     else:
         form = RegisterForm()
     context = {
